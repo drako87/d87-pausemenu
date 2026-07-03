@@ -1,0 +1,111 @@
+html, body {
+    margin: 0; padding: 0;
+    width: 100vw; height: 100vh;
+    font-family: 'Arial', sans-serif;
+    background: transparent !important;
+    background-color: rgba(0, 0, 0, 0) !important;
+    overflow: hidden; user-select: none;
+}
+
+#app {
+    width: 100vw; height: 100vh;
+    background: transparent !important;
+    background-color: rgba(0, 0, 0, 0) !important;
+    backdrop-filter: none !important;         
+    -webkit-backdrop-filter: none !important;
+    display: flex; justify-content: center; align-items: center;
+}
+
+.bubble-window {
+    background: rgba(10, 10, 10, 0.94) !important;
+    padding: 35px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.08); 
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+    display: block;
+}
+
+.main-layout { display: flex; gap: 30px; align-items: flex-start; }
+.side-panel { width: 250px; display: flex; flex-direction: column; gap: 15px; }
+
+.panel-section {
+    background: rgba(20, 20, 20, 0.65); border-radius: 6px;
+    padding: 15px; color: white; border-left: 4px solid #ff6b6b;
+}
+
+.panel-section h3 { margin: 0 0 10px 0; font-size: 13px; opacity: 0.8; letter-spacing: 1px; }
+.info-box p { margin: 0; font-size: 24px; font-weight: bold; color: #ffc107; }
+.news-box { border-left-color: #5865F2; }
+.news-box p { margin: 0; font-size: 12px; line-height: 1.4; opacity: 0.9; }
+
+.menu-container {
+    display: grid;
+    grid-template-columns: repeat(4, 220px);
+    grid-template-rows: 90px 240px 80px 80px;
+    gap: 15px;
+}
+
+.grey-header-bar {
+    grid-column: 1 / 5;
+    background: rgba(25, 25, 25, 0.85);
+    border-radius: 6px;
+    padding: 12px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: opacity 0.2s;
+    border-left: 4px solid #ffc107;
+}
+
+.header-row { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+.character-data { font-size: 14px; font-weight: bold; border-bottom: 1px solid rgba(255, 255, 255, 0.15); padding-bottom: 6px; }
+.server-data { font-size: 13px; opacity: 0.9; padding-top: 4px; }
+.server-data b { color: #ffc107; }
+
+/* Tarjetas base con propiedades heredadas desde JavaScript */
+.card {
+    border-radius: 6px; padding: 20px;
+    display: flex; flex-direction: column; justify-content: flex-start;
+    color: white; cursor: pointer; transition: transform 0.2s, background 0.2s;
+    background-size: cover; background-position: center;
+    background-repeat: no-repeat;
+}
+.card:hover { transform: scale(1.03); }
+.subtitle { font-size: 11px; opacity: 0.7; font-weight: bold; text-shadow: 1px 1px 3px rgba(0,0,0,0.8); }
+.title { font-size: 26px; font-weight: 900; margin-top: 5px; text-shadow: 1px 1px 4px rgba(0,0,0,0.8); }
+.title-small { font-size: 18px; font-weight: 900; margin-top: 2px; text-shadow: 1px 1px 4px rgba(0,0,0,0.8); }
+
+.split-card-container { display: flex; flex-direction: column; gap: 12px; height: 100%; }
+.split-subcard {
+    flex: 1; border-radius: 6px; padding: 12px 18px;
+    display: flex; flex-direction: column; justify-content: center;
+    color: white; cursor: pointer; transition: transform 0.2s;
+    background-size: cover; background-position: center;
+    background-repeat: no-repeat;
+}
+.split-subcard:hover { transform: scale(1.03); }
+
+.disconnect-card { background: #ff6b6b; justify-content: center; }
+.disconnect-card:hover { background: #ff8585; }
+
+.action-btn-card { background: rgba(25, 25, 25, 0.85); justify-content: center; align-items: center; gap: 8px; padding: 10px; }
+.action-btn-card i { font-size: 20px; }
+.action-btn-card span { font-size: 11px; font-weight: bold; text-align: center; }
+.action-btn-card.active { background: #28a745; color: white; }
+.unstuck:hover { background: #ff6b6b; }
+
+.sub-grid { grid-column: 1 / 5; display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+.btn {
+    border-radius: 6px; display: flex; align-items: center; justify-content: center;
+    gap: 10px; color: white; font-size: 13px; font-weight: bold; cursor: pointer; height: 50px;
+    transition: transform 0.2s, background 0.2s;
+}
+.btn:hover { transform: scale(1.03); }
+
+.btn.discord { background: #5865F2; }
+.btn.web { background: #212529; }
+.btn.store { background: #28a745; }
+.btn.news { background: #ffe066; color: #5c4300; }
+.btn.news:hover { background: #ffd43b; }

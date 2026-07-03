@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="fontawesome/all.min.css">
+</head>
+<body>
+    <div id="app" style="display: none;">
+
+        <div class="bubble-window">
+            <div class="main-layout">
+                
+                <!-- PANEL IZQUIERDO -->
+                <div class="side-panel">
+                    <div class="panel-section info-box">
+                        <h3><i class="fa-solid fa-clock"></i> TIEMPO JUGADO</h3>
+                        <p id="player-hours">0h 0m</p>
+                    </div>
+                    
+                    <div class="panel-section news-box">
+                        <h3 id="news-title">ANUNCIOS</h3>
+                        <p id="news-desc">Cargando...</p>
+                    </div>
+
+                    <div class="panel-section news-box">
+                        <h3 id="news01-title">ANUNCIOS 01</h3>
+                        <p id="news01-desc">Cargando...</p>
+                    </div>
+
+                    <div class="panel-section news-box">
+                        <h3 id="news02-title">ANUNCIOS 02</h3>
+                        <p id="news02-desc">Cargando...</p>
+                    </div>
+                </div>
+
+                <!-- PANEL CENTRAL -->
+                <div class="menu-container">
+                    
+                    <!-- CABECERA GRIS MATE CON NOMBRE DEL PERSONAJE -->
+                    <div class="grey-header-bar" id="streamer-hide-header">
+                        <div class="header-row character-data">
+                            <div><i class="fa-solid fa-user-tie"></i> <span id="player-charname">CARGANDO NOMBRE...</span></div>
+                            <div><i class="fa-solid fa-briefcase"></i> <span id="player-job">DESEMPLEADO</span></div>
+                            <div><i class="fa-solid fa-wallet"></i> $<span id="player-cash">0</span></div>
+                            <div><i class="fa-solid fa-building-columns"></i> $<span id="player-bank">0</span></div>
+                            <div><i class="fa-solid fa-id-card"></i> ID: <span id="player-id">0</span></div>
+                        </div>
+                        <div class="header-row server-data">
+                            <div><i class="fa-solid fa-shield-halved"></i> Policías: <b id="count-police">0</b></div>
+                            <div><i class="fa-solid fa-kit-medical"></i> EMS: <b id="count-ems">0</b></div>
+                            <div><i class="fa-solid fa-wrench"></i> Mecánicos: <b id="count-mechanic">0</b></div>
+                            <div><i class="fa-solid fa-crown"></i> Admins: <b id="count-staff">0</b></div>
+                            <div><i class="fa-solid fa-users"></i> Online: <b id="count-online">0</b></div>
+                        </div>
+                    </div>
+                    
+                    <!-- LAS TARJETAS IDENTIFICADAS AHORA RECIBEN EL ESTILO DESDE JS -->
+                    <div class="card" id="card-map" onclick="triggerAction('map')">
+                        <span class="subtitle">SITIOS DE INTERÉS</span>
+                        <span class="title" id="lbl-map">MAPA</span>
+                    </div>
+                    
+                    <div class="card" id="card-settings" onclick="triggerAction('settings')">
+                        <span class="subtitle">CONFIGURACIÓN</span>
+                        <span class="title" id="lbl-settings">AJUSTES</span>
+                    </div>
+
+                    <div class="split-card-container">
+                        <div class="split-subcard" id="card-rules" onclick="triggerAction('rules')">
+                            <span class="subtitle">CONOCER REGLAS</span>
+                            <span class="title-small" id="lbl-rules">NORMATIVAS</span>
+                        </div>
+                        <div class="split-subcard" id="card-report" onclick="triggerAction('report')">
+                            <span class="subtitle">NOTIFICAR SUCESO</span>
+                            <span class="title-small" id="lbl-report">REPORTAR</span>
+                        </div>
+                    </div>
+
+                    <div class="card" id="card-battlepass">
+                        <span class="subtitle">ABRIL</span>
+                        <span class="title" id="lbl-battlepass">BATTLEPASS</span>
+                    </div>
+
+                    <div class="card action-btn-card unstuck" onclick="triggerAction('unstuck')">
+                        <i class="fa-solid fa-person-falling-burst"></i>
+                        <span id="lbl-unstick">DESBUGUEAR</span>
+                    </div>
+
+                    <div class="card action-btn-card toggle-card" onclick="toggleOption('fps')">
+                        <i class="fa-solid fa-bolt" id="icon-fps"></i>
+                        <span id="lbl-fps">FPS BOOST</span>
+                    </div>
+
+                    <div class="card action-btn-card toggle-card" onclick="toggleOption('streamer')">
+                        <i class="fa-solid fa-eye" id="icon-streamer"></i>
+                        <span id="lbl-streamer">MODO STREAMER</span>
+                    </div>
+
+                    <div class="card disconnect-card" onclick="triggerAction('disconnect')">
+                        <span class="subtitle">DESCONECTARSE</span>
+                        <span class="title" id="lbl-disconnect">SALIR</span>
+                    </div>
+
+                    <div class="sub-grid">
+                        <div class="btn web" onclick="openLink('web')"><i class="fa-solid fa-globe"></i> WEB</div>
+                        <div class="btn discord" onclick="openLink('discord')"><i class="fa-brands fa-discord"></i> DISCORD</div>
+                        <div class="btn news" onclick="openLink('news')">
+                            <i class="fa-solid fa-newspaper"></i> <span id="lbl-news">NOTICIAS</span>
+                        </div>
+                        <div class="btn store" onclick="openLink('store')"><i class="fa-solid fa-shop"></i> TIENDA</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
