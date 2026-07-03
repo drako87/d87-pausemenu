@@ -40,7 +40,7 @@ d87-pausemenu/
    ```
 2. **Configurar el Framework:** Abre el archivo `config.lua` y define el framework que utiliza tu servidor (`esx`, `qb-core` o `qbx`):
    ```lua
-   Config.Framework = "qb-core" -- Opciones: "esx", "qb-core", "qbx"
+   Config.Framework = "qbx" -- Opciones: "esx", "qb-core", "qbx"
    ```
 3. **Asegurar el inicio:** Añade la línea de carga en tu archivo de configuración del servidor (`server.cfg`):
    ```cfg
