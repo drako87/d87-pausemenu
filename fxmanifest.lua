@@ -1,7 +1,7 @@
 fx_version 'cerulean'
 game 'gta5'
 
-author 'd87'
+author 'Drako87/Dracatt'
 description 'Menu de Pausa Premium Local Multiframework'
 version '1.0.0'
 
