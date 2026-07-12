@@ -2,29 +2,34 @@ local isOpen = false
 local Framework = nil
 local streamerMode = false
 local fpsBoostActive = false
-local hoursPlayed = 0
-local minutesPlayed = 0
 local ignoreBlockThisFrame = false
-
-CreateThread(function()
-    while true do
-        Wait(60000)
-        minutesPlayed = minutesPlayed + 1
-        if minutesPlayed >= 60 then
-            minutesPlayed = 0
-            hoursPlayed = hoursPlayed + 1
-        end
-    end
-end)
 
 function OpenPauseMenu()
     TriggerServerEvent('d87-pausemenu:server:requestAllData')
 end
 
+-- Comprueba si en este momento está permitido abrir el menú de pausa.
+-- Evita que se abra encima del inventario, tiendas, u otros menús NUI/nativos.
+function CanOpenPauseMenu()
+    if isOpen then return false end
+    if IsPauseMenuActive() then return false end
+
+    if Config.BlockOpenIfNuiFocused and IsNuiFocused() then
+        return false
+    end
+
+    if Config.BlockOpenIfDead then
+        local ped = PlayerPedId()
+        if IsEntityDead(ped) or IsPedFatallyInjured(ped) then
+            return false
+        end
+    end
+
+    return true
+end
+
 RegisterNetEvent('d87-pausemenu:client:receiveAllData', function(stats)
     isOpen = true
-    
-    stats.hours = string.format("%dh %dm", hoursPlayed, minutesPlayed)
     
     -- Inyección de los bloques de anuncios
     stats.announcementTitle = Config.Announcements.title
@@ -56,11 +61,11 @@ CreateThread(function()
         if not ignoreBlockThisFrame then
             DisableFrontendThisFrame()
             
-            if IsDisabledControlJustPressed(0, 200) and not isOpen and not IsPauseMenuActive() then
+            if IsDisabledControlJustPressed(0, 200) and CanOpenPauseMenu() then
                 OpenPauseMenu()
             end
             
-            if IsControlJustPressed(0, 199) and not isOpen then
+            if IsControlJustPressed(0, 199) and not isOpen and not IsNuiFocused() then
                 ignoreBlockThisFrame = true
                 Wait(10)
                 ActivateFrontendMenu(GetHashKey('FE_MENU_VERSION_MP_PAUSE'), false, -1)

@@ -26,5 +26,11 @@ files {
     -- Archivos de iconos locales (Evita errores MIME de Cloudflare)
     'html/fontawesome/all.min.css',
     'html/fontawesome/webfonts/fa-solid-900.woff2',
-    'html/fontawesome/webfonts/fa-brands-400.woff2'
+    'html/fontawesome/webfonts/fa-brands-400.woff2',
+    -- Imágenes de fondo de las tarjetas (100% locales, ver config.lua)
+    'html/img/map.png',
+    'html/img/settings.png',
+    'html/img/rules.png',
+    'html/img/report.png',
+    'html/img/battlepass.png'
 }

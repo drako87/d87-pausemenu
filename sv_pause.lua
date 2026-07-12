@@ -32,12 +32,50 @@ function GetServerData()
     return { police = police, ems = ems, mechanic = mechanic, staff = staff, online = totalPlayers }
 end
 
+-- ⚠️ CONECTA AQUÍ TU SISTEMA DE FACTURAS Y MULTAS ⚠️
+-- Este script no incluye un sistema de facturación propio, así que esta función
+-- es un "puente" genérico: debes adaptarla al recurso que uses en tu servidor.
+-- Debe devolver siempre una tabla con { count = <número de facturas pendientes>, total = <suma en $> }.
+--
+-- Ejemplos de integración (descomenta y ajusta el que corresponda a tu recurso):
+--
+-- -- qb-billing / ps-billing:
+-- local success, bills = pcall(function()
+--     return exports['qb-billing']:GetPlayerBills(src)
+-- end)
+-- if success and bills then
+--     local total = 0
+--     for _, bill in pairs(bills) do total = total + (bill.amount or 0) end
+--     return { count = #bills, total = total }
+-- end
+--
+-- -- renewed-banking (facturas via evento/export propio):
+-- local invoices = exports['Renewed-Banking']:getInvoices(src)
+-- if invoices then
+--     local total = 0
+--     for _, inv in pairs(invoices) do total = total + (inv.amount or 0) end
+--     return { count = #invoices, total = total }
+-- end
+--
+-- -- Consulta directa a base de datos (ejemplo con MySQL genérica, ajusta tabla/columnas):
+-- local citizenid = ... -- obtén el identificador de tu framework
+-- local result = MySQL.query.await('SELECT amount FROM bills WHERE citizenid = ? AND is_paid = 0', {citizenid})
+-- if result then
+--     local total = 0
+--     for _, row in pairs(result) do total = total + (row.amount or 0) end
+--     return { count = #result, total = total }
+-- end
+function GetPlayerBills(src)
+    return { count = 0, total = 0 }
+end
+
 RegisterNetEvent('d87-pausemenu:server:requestAllData', function()
     local src = source
     local sData = GetServerData()
     local data = {
         id = src, cash = 0, bank = 0, job = "Desempleado", charName = "Sin Nombre",
-        police = sData.police, ems = sData.ems, mechanic = sData.mechanic, staff = sData.staff, online = sData.online
+        police = sData.police, ems = sData.ems, mechanic = sData.mechanic, staff = sData.staff, online = sData.online,
+        bills = GetPlayerBills(src)
     }
 
     if Config.Framework == "qb-core" and Framework then

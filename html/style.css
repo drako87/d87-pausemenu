@@ -35,6 +35,8 @@ html, body {
 
 .panel-section h3 { margin: 0 0 10px 0; font-size: 13px; opacity: 0.8; letter-spacing: 1px; }
 .info-box p { margin: 0; font-size: 24px; font-weight: bold; color: #ffc107; }
+.info-box .bills-subtitle { display: block; margin-top: 4px; font-size: 11px; opacity: 0.75; letter-spacing: 0.5px; }
+.info-box .bills-subtitle b { color: #ff6b6b; }
 .news-box { border-left-color: #5865F2; }
 .news-box p { margin: 0; font-size: 12px; line-height: 1.4; opacity: 0.9; }
 

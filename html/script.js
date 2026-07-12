@@ -18,7 +18,10 @@ window.addEventListener('message', function(event) {
         document.getElementById('count-staff').innerText = item.data.staff;
         document.getElementById('count-online').innerText = item.data.online;
         
-        document.getElementById('player-hours').innerText = item.data.hours;
+        // Tarjeta de Facturas y Multas
+        let bills = item.data.bills || { count: 0, total: 0 };
+        document.getElementById('player-bills-total').innerText = bills.total.toLocaleString();
+        document.getElementById('player-bills-count').innerText = bills.count;
         
         document.getElementById('news-title').innerText = item.data.announcementTitle;
         document.getElementById('news-desc').innerText = item.data.announcementDesc;
@@ -27,7 +30,7 @@ window.addEventListener('message', function(event) {
         document.getElementById('news02-title').innerText = item.data.announcement02Title;
         document.getElementById('news02-desc').innerText = item.data.announcement02Desc;
 
-        // INYECCIÓN DINÁMICA DE FONDOS DESDE EL CONFIG
+        // INYECCIÓN DINÁMICA DE FONDOS DESDE EL CONFIG (imágenes locales en html/img/)
         document.getElementById('card-map').style.backgroundImage = `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('${item.data.backgrounds.map}')`;
         document.getElementById('card-settings').style.backgroundImage = `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('${item.data.backgrounds.settings}')`;
         document.getElementById('card-rules').style.backgroundImage = `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('${item.data.backgrounds.rules}')`;
@@ -45,6 +48,8 @@ window.addEventListener('message', function(event) {
         document.getElementById('lbl-unstick').innerText = item.data.locales.unstick;
         document.getElementById('lbl-fps').innerText = item.data.locales.fps;
         document.getElementById('lbl-streamer').innerText = item.data.locales.streamer;
+        document.getElementById('lbl-bills').innerText = item.data.locales.bills;
+        document.getElementById('lbl-bills-pending').innerText = item.data.locales.billsPending;
     }
 
     if (item.action === "close") {

@@ -1,0 +1,12 @@
+Coloca aquí tus imágenes de fondo para las tarjetas del menú, con estos nombres exactos
+(o cambia las rutas en config.lua si prefieres otros nombres):
+
+  map.png
+  settings.png
+  rules.png
+  report.png
+  battlepass.png
+
+Formato recomendado: PNG o JPG, tamaño aproximado 500x300px.
+Recuerda que fxmanifest.lua ya las declara en la sección "files", así que si cambias
+los nombres de archivo o extensiones también debes actualizar esa lista.
